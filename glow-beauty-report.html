@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Beauty Project Report</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            border-bottom: 3px double #000;
+        }
+
+        h1 { font-size: 26pt; margin: 0; text-transform: uppercase; }
+        .subtitle { font-size: 16pt; margin-top: 10px; font-weight: bold; color: #db2777; }
+        
+        h2 { font-size: 18pt; border-bottom: 1px solid #000; padding-bottom: 5px; margin-top: 40px; text-transform: uppercase; }
+        h3 { font-size: 14pt; font-weight: bold; margin-top: 25px; color: #333; }
+        
+        p, li { font-size: 12pt; line-height: 1.6; text-align: justify; }
+
+        .code-box {
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            margin: 10px 0;
+            word-wrap: break-word;
+            border-left: 5px solid #db2777;
+        }
+
+        .output-placeholder {
+            width: 100%;
+            height: 350px;
+            border: 2px dashed #db2777;
+            background: #fffafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #db2777;
+            font-weight: bold;
+            font-size: 13pt;
+            margin: 25px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .command-table td, .command-table th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .command-table th { background-color: #fdf2f8; color: #9d174d; }
+
+        .page-break { page-break-before: always; }
+
+        @media print {
+            body { background: none; }
+            .page { margin: 0; box-shadow: none; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: TITLE & CORE DOCUMENTATION -->
+    <div class="page">
+        <div class="title-section">
+            <h1>TECHNICAL PROJECT REPORT</h1>
+            <div class="subtitle">Glow Beauty: Skincare E-Commerce Portal</div>
+            <p>Angular 18 Framework | Standalone Architecture</p>
+        </div>
+
+        <h2>1. Project Aim & Objectives</h2>
+        <p>
+            The <strong>Glow Beauty Portal</strong> is a modern e-commerce application developed to showcase premium skincare products. The project's primary goal is to demonstrate the integration of Angular's core technical concepts into a professional, aesthetic user interface.
+        </p>
+
+        <h3>Technical Objectives:</h3>
+        <ul>
+            <li>Implement <strong>Directives</strong> for dynamic DOM manipulation (Hover Effects).</li>
+            <li>Utilize <strong>Pipes</strong> for data transformation (Currency, Case, and Slugs).</li>
+            <li>Manage application state through <strong>Reactive Properties</strong> in TypeScript.</li>
+            <li>Create a modular, scalable structure using <strong>Standalone Components</strong>.</li>
+        </ul>
+
+        <h2>2. Development Workflow</h2>
+        <table class="command-table">
+            <tr>
+                <th>Phase</th>
+                <th>CLI Command Used</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Init</td>
+                <td>ng new glow-beauty-app</td>
+                <td>Project scaffolding & setup.</td>
+            </tr>
+            <tr>
+                <td>Component</td>
+                <td>ng generate component products</td>
+                <td>Main dashboard development.</td>
+            </tr>
+            <tr>
+                <td>Directive</td>
+                <td>ng generate directive glow</td>
+                <td>Custom hover interaction logic.</td>
+            </tr>
+            <tr>
+                <td>Pipe</td>
+                <td>ng generate pipe kebab-case</td>
+                <td>SEO-friendly URL transformation.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PAGE 2: CODE IMPLEMENTATION (LOGIC) -->
+    <div class="page">
+        <h2>3. Code Implementation: Logic Layer</h2>
+
+        <h3>3.1 Component Logic (products.ts)</h3>
+        <p>Handles the product database, reactive filtering, and cart state.</p>
+        <div class="code-box">
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { GlowHighlightDirective } from '../glow-highlight';
+import { KebabCasePipe } from '../kebab-case-pipe';
+
+@Component({
+  selector: 'app-products',
+  standalone: true,
+  imports: [CommonModule, FormsModule, GlowHighlightDirective, KebabCasePipe],
+  templateUrl: './products.html',
+  styleUrl: './products.css'
+})
+export class ProductsComponent {
+  storeName = 'Glow Beauty';
+  selectedCategory = 'All';
+  cartCount = 0;
+
+  allProducts = [
+    { id: 1, name: 'Rose Hydrating Serum', category: 'Serums', price: 48, rating: 4.9, image: '🌹', inStock: true },
+    { id: 2, name: 'Vitamin C Cream', category: 'Moisturizers', price: 52, rating: 4.8, image: '🍊', inStock: true },
+    { id: 3, name: 'Gentle Cleanser', category: 'Cleansers', price: 28, rating: 4.7, image: '🫧', inStock: true },
+    { id: 4, name: 'Retinol Night Mask', category: 'Masks', price: 65, rating: 4.9, image: '🌙', inStock: false }
+  ];
+
+  get filteredProducts() {
+    if (this.selectedCategory === 'All') return this.allProducts;
+    return this.allProducts.filter(p => p.category === this.selectedCategory);
+  }
+
+  addToCart(name: string) {
+    this.cartCount++;
+    alert(`Added ${name} to cart!`);
+  }
+
+  filterByCategory(cat: string) {
+    this.selectedCategory = cat;
+  }
+}</div>
+
+        <h3>3.2 Custom Glow Directive (glow-highlight.ts)</h3>
+        <div class="code-box">
+@Directive({ selector: '[appGlow]', standalone: true })
+export class GlowHighlightDirective {
+  constructor(private el: ElementRef) {}
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.el.nativeElement.style.backgroundColor = '#fdf2f8';
+    this.el.nativeElement.style.boxShadow = '0 10px 25px rgba(219, 39, 119, 0.2)';
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.el.nativeElement.style.backgroundColor = '';
+    this.el.nativeElement.style.boxShadow = '';
+  }
+}</div>
+    </div>
+
+    <!-- PAGE 3: CODE IMPLEMENTATION (VIEW & PIPE) -->
+    <div class="page">
+        <h3>3.3 Template View (products.html)</h3>
+        <div class="code-box">
+&lt;div class="shop-wrapper"&gt;
+  &lt;header class="navbar"&gt;
+    &lt;h1&gt;{{ storeName | uppercase }}&lt;/h1&gt;
+    &lt;div class="cart"&gt;🛒 {{ cartCount }}&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section class="filters"&gt;
+    &lt;button *ngFor="let cat of categories" (click)="filterByCategory(cat)"&gt;
+      {{ cat }}
+    &lt;/button&gt;
+  &lt;/section&gt;
+
+  &lt;div class="product-grid"&gt;
+    &lt;div class="card" *ngFor="let p of filteredProducts" appGlow&gt;
+      &lt;div class="img"&gt;{{ p.image }}&lt;/div&gt;
+      &lt;h3&gt;{{ p.name }}&lt;/h3&gt;
+      &lt;p&gt;/products/{{ p.name | kebabCase }}&lt;/p&gt;
+      &lt;button (click)="addToCart(p.name)"&gt;Buy {{ p.price | currency }}&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+
+        <h3>3.4 Custom Kebab-Case Pipe (kebab-case-pipe.ts)</h3>
+        <div class="code-box">
+@Pipe({ name: 'kebabCase', standalone: true })
+export class KebabCasePipe implements PipeTransform {
+  transform(value: string): string {
+    if (!value) return value;
+    return value.replace(/\s+/g, '-').toLowerCase();
+  }
+}</div>
+    </div>
+
+    <!-- PAGE 4: PROJECT OUTPUT (FINAL RESULTS) -->
+    <div class="page">
+        <h2>4. Visual Project Output</h2>
+        <p>The following sections provide evidence of the successful execution and rendering of the application features.</p>
+
+        <h3>4.1 Final Landing Page View</h3>
+        <div class="output-placeholder">
+            [ ATTACH SCREENSHOT: MAIN WEBSITE INTERFACE ]
+        </div>
+
+        <h3>4.2 Reactive Filtering in Action</h3>
+        <div class="output-placeholder">
+            [ ATTACH SCREENSHOT: FILTERED PRODUCT CATEGORIES ]
+        </div>
+
+        <h3>4.3 Interactive Hover Glow (Directive Demo)</h3>
+        <div class="output-placeholder">
+            [ ATTACH SCREENSHOT: MOUSE HOVER OVER PRODUCT CARD ]
+        </div>
+
+        <h3>4.4 Shopping Cart & Pipe Validation</h3>
+        <div class="output-placeholder">
+            [ ATTACH SCREENSHOT: CART ALERT & KEBAB-CASE TEXT ]
+        </div>
+
+        <h2>5. Conclusion</h2>
+        <p>
+            The project was completed successfully, achieving all technical objectives. The application demonstrated the versatility of Angular in building high-end, data-driven interfaces. By utilizing custom directives and pipes, the "Glow Beauty" portal provides a unique and professional user experience.
+        </p>
+    </div>
+
+</body>
+</html>

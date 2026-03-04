@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Beauty | Development Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glow-pink: #db2777;
+            --soft-rose: #fdf2f8;
+            --dark-text: #1f2937;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fff 0%, #fdf2f8 100%);
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        .header-banner {
+            background: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #fce7f3;
+            box-shadow: 0 4px 15px rgba(219, 39, 119, 0.05);
+        }
+
+        .header-banner h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--glow-pink);
+            letter-spacing: 2px;
+        }
+
+        .header-banner p {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: #9d174d;
+            font-weight: 600;
+        }
+
+        .journal-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* Journal Phase Styling */
+        .phase-block {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 80px;
+            border-left: 2px solid #fce7f3;
+        }
+
+        .phase-number {
+            position: absolute;
+            left: -18px;
+            top: 0;
+            background: var(--glow-pink);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(219, 39, 119, 0.3);
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-top: 0;
+            color: #111;
+        }
+
+        .desc-text {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Snapshot Placeholders */
+        .snapshot-main {
+            background: #fff;
+            border-radius: 15px;
+            border: 1px solid #fce7f3;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #db2777;
+            font-weight: 600;
+            font-style: italic;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        /* Code Log Design */
+        .code-log {
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .file-name {
+            color: #f472b6;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        pre {
+            margin: 0;
+            color: #e5e7eb;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .code-ss-placeholder {
+            background: #fdf2f8;
+            border: 2px dashed #f9a8d4;
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #be185d;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #fce7f3;
+            margin-top: 100px;
+            color: #999;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header-banner">
+        <h1>Glow Beauty</h1>
+        <p>Project Development Journal</p>
+    </header>
+
+    <div class="journal-container">
+
+        <!-- PHASE 1: THE CORE AIM -->
+        <div class="phase-block">
+            <div class="phase-number">01</div>
+            <h2>Project Vision & Architecture</h2>
+            <p class="desc-text">The goal was to build a high-end Skincare Portal using Angular. We implemented a standalone architecture to ensure the app is fast, modern, and easy to maintain.</p>
+            
+            <div class="snapshot-main">
+                [ PASTE FULL BROWSER OUTPUT SCREENSHOT HERE ]
+            </div>
+        </div>
+
+        <!-- PHASE 2: COMPONENT LOGIC -->
+        <div class="phase-block">
+            <div class="phase-number">02</div>
+            <h2>Behind the Logic (TypeScript)</h2>
+            <p class="desc-text">We handled data management using Reactive logic, allowing users to filter products by category instantly without reloading the page.</p>
+
+            <div class="code-log">
+                <span class="file-name">app.ts / products.ts</span>
+                <pre>
+export class ProductsComponent {
+  selectedCategory = 'All';
+  cartCount = 0;
+  
+  addToCart() { this.cartCount++; }
+}</pre>
+            </div>
+            <div class="code-ss-placeholder">
+                [ PASTE CODE SCREENSHOT OF YOUR <br> TS FILES HERE ]
+            </div>
+        </div>
+
+        <!-- PHASE 3: CUSTOM FEATURES -->
+        <div class="phase-block">
+            <div class="phase-number">03</div>
+            <h2>Custom Pipes & Directives</h2>
+            <p class="desc-text">To make the site unique, we built a <strong>Glow Directive</strong> for interactive shadows and a <strong>Kebab-Case Pipe</strong> for URL slug generation.</p>
+
+            <div class="code-log">
+                <span class="file-name">glow-highlight.ts / kebab-case-pipe.ts</span>
+                <pre>
+@HostListener('mouseenter') 
+onMouseEnter() {
+  this.el.nativeElement.style.boxShadow = 'glow-effect';
+}</pre>
+            </div>
+            <div class="code-ss-placeholder">
+                [ PASTE CODE SCREENSHOT OF <br> DIRECTIVE & PIPE HERE ]
+            </div>
+        </div>
+
+        <!-- PHASE 4: THE USER INTERFACE -->
+        <div class="phase-block">
+            <div class="phase-number">04</div>
+            <h2>Visual Design & UX</h2>
+            <p class="desc-text">The interface was designed with a focus on "Glassmorphism" and soft rose colors to match the skincare theme.</p>
+
+            <div class="code-log">
+                <span class="file-name">products.html / products.css</span>
+                <pre>
+&lt;section class="product-grid"&gt;
+  &lt;div class="card" *ngFor="let p of products" appGlow&gt;
+    &lt;h3&gt;{{ p.name }}&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+            </div>
+            <div class="code-ss-placeholder">
+                [ PASTE CODE SCREENSHOT OF <br> HTML & CSS HERE ]
+            </div>
+        </div>
+
+        <!-- PHASE 5: LIVE DEMONSTRATION -->
+        <div class="phase-block">
+            <div class="phase-number">05</div>
+            <h2>Interactive Results</h2>
+            <p class="desc-text">Functional snapshots of the application handling real user interactions like filtering and adding to cart.</p>
+            
+            <div class="snapshot-main" style="height: 350px;">
+                [ PASTE SCREENSHOT OF FILTERED PRODUCTS ]
+            </div>
+            <div class="snapshot-main" style="height: 350px;">
+                [ PASTE SCREENSHOT OF HOVER GLOW EFFECT ]
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer-note">
+        GLOW BEAUTY PORTAL &bull; ANGULAR PROJECT DOCUMENTATION &bull; 2024
+    </footer>
+
+</body>
+</html>
